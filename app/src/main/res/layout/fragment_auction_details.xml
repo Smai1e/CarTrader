@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.views.auctionDetails.AuctionDetailsFragment">
+
+    <include layout="@layout/part_result" />
+
+    <LinearLayout
+        android:id="@+id/auctionPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.viewpager2.widget.ViewPager2
+                            android:id="@+id/view_pager_image_slider"
+                            android:layout_width="match_parent"
+                            android:layout_height="300dp"
+                            android:paddingHorizontal="20dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.divider.MaterialDivider
+                            android:id="@+id/materialDivider"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            app:dividerInsetEnd="16dp"
+                            app:dividerInsetStart="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/open_date_text_view" />
+
+                        <TextView
+                            android:id="@+id/open_date_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/view_pager_image_slider"
+                            tools:text="18.03.23 17:00" />
+
+                        <TextView
+                            android:id="@+id/close_date_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/view_pager_image_slider"
+                            tools:text="20.03.23 17:00" />
+
+                        <TextView
+                            android:id="@+id/status_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/materialDivider"
+                            tools:text="Состояние: активен" />
+
+                        <TextView
+                            android:id="@+id/start_bid_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/min_bid_amount"
+                            app:layout_constraintStart_toStartOf="@id/status_text_view"
+                            app:layout_constraintTop_toBottomOf="@id/status_text_view" />
+
+                        <TextView
+                            android:id="@+id/start_bid_value_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/start_bid_text_view"
+                            app:layout_constraintTop_toBottomOf="@+id/start_bid_text_view"
+                            tools:text="3 500 000 ₽" />
+
+                        <TextView
+                            android:id="@+id/actual_bid_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/actual_bid_amount"
+                            app:layout_constraintStart_toStartOf="@+id/start_bid_value_text_view"
+                            app:layout_constraintTop_toBottomOf="@+id/start_bid_value_text_view" />
+
+                        <TextView
+                            android:id="@+id/actual_bid_value_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/actual_bid_text_view"
+                            app:layout_constraintTop_toBottomOf="@+id/actual_bid_text_view"
+                            tools:text="3 750 000 ₽" />
+
+                        <TextView
+                            android:id="@+id/bid_count_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/bid_count"
+                            app:layout_constraintStart_toStartOf="@+id/actual_bid_value_text_view"
+                            app:layout_constraintTop_toBottomOf="@+id/actual_bid_value_text_view" />
+
+                        <TextView
+                            android:id="@+id/bid_count_value_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/bid_count_text_view"
+                            app:layout_constraintTop_toBottomOf="@+id/bid_count_text_view"
+                            tools:text="7" />
+
+                        <androidx.compose.ui.platform.ComposeView
+                            android:id="@+id/circle_progress_bar"
+                            android:layout_width="180dp"
+                            android:layout_height="180dp"
+                            android:padding="8dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/bid_count_value_text_view"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/status_text_view"
+                            app:layout_constraintTop_toTopOf="@id/status_text_view" />
+
+                        <ImageButton
+                            android:id="@+id/minus_button"
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/edit_text_layout_background"
+                            android:backgroundTint="?attr/colorPrimary"
+                            android:src="@drawable/ic_minus"
+                            app:layout_constraintBottom_toBottomOf="@id/bidAmount_text_input"
+                            app:layout_constraintEnd_toStartOf="@id/bidAmount_text_input"
+                            app:layout_constraintTop_toTopOf="@id/bidAmount_text_input" />
+
+                        <ImageButton
+                            android:id="@+id/plus_button"
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/edit_text_layout_background"
+                            android:backgroundTint="?attr/colorPrimary"
+                            android:src="@drawable/ic_plus"
+                            app:layout_constraintBottom_toBottomOf="@id/bidAmount_text_input"
+                            app:layout_constraintStart_toEndOf="@id/bidAmount_text_input"
+                            app:layout_constraintTop_toTopOf="@id/bidAmount_text_input" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/bidAmount_text_input"
+                            android:layout_width="160dp"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:lines="1"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/circle_progress_bar"
+                            tools:text="3 800 000" />
+
+                        <androidx.compose.ui.platform.ComposeView
+                            android:id="@+id/chart_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginVertical="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/bidAmount_text_input" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:id="@+id/characteristics_title_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/characteristics"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.constraintlayout.widget.Barrier
+                            android:id="@+id/barrier"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:barrierDirection="right"
+                            app:barrierMargin="24dp"
+                            app:constraint_referenced_ids="gearbox_textView,manufacturerDate_textView,color_textView,mileage_textView,driveWheel_textView" />
+
+                        <TextView
+                            android:id="@+id/manufacturerDate_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/manufacturer_date"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/characteristics_title_textView" />
+
+                        <TextView
+                            android:id="@+id/mileage_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/mileage"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/manufacturerDate_textView"
+                            tools:layout_editor_absoluteY="20dp" />
+
+                        <TextView
+                            android:id="@+id/color_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/color"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/mileage_textView"
+                            tools:layout_editor_absoluteY="20dp" />
+
+                        <TextView
+                            android:id="@+id/gearbox_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/gearbox"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/color_textView"
+                            tools:layout_editor_absoluteY="20dp" />
+
+                        <TextView
+                            android:id="@+id/driveWheel_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/drive_wheel"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/gearbox_textView"
+                            tools:layout_editor_absoluteY="20dp" />
+
+                        <TextView
+                            android:id="@+id/engine_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/engine"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/driveWheel_textView"
+                            tools:layout_editor_absoluteY="20dp" />
+
+                        <TextView
+                            android:id="@+id/vin_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/vin"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/engine_textView"
+                            tools:layout_editor_absoluteY="20dp" />
+
+                        <TextView
+                            android:id="@+id/manufacturerDate_value_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toEndOf="@id/barrier"
+                            app:layout_constraintTop_toTopOf="@id/manufacturerDate_textView"
+                            tools:text="2000" />
+
+                        <TextView
+                            android:id="@+id/mileage_value_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toEndOf="@id/barrier"
+                            app:layout_constraintTop_toTopOf="@id/mileage_textView"
+                            tools:text="385854 km" />
+
+                        <TextView
+                            android:id="@+id/color_value_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toEndOf="@id/barrier"
+                            app:layout_constraintTop_toTopOf="@id/color_textView"
+                            tools:text="Синий" />
+
+                        <TextView
+                            android:id="@+id/gearbox_value_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toEndOf="@id/barrier"
+                            app:layout_constraintTop_toTopOf="@id/gearbox_textView"
+                            tools:text="Автомат" />
+
+                        <TextView
+                            android:id="@+id/driveWheel_value_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toEndOf="@id/barrier"
+                            app:layout_constraintTop_toTopOf="@id/driveWheel_textView"
+                            tools:text="Полный" />
+
+                        <TextView
+                            android:id="@+id/engine_value_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toEndOf="@id/barrier"
+                            app:layout_constraintTop_toTopOf="@id/engine_textView"
+                            tools:text="320 л.с." />
+
+                        <TextView
+                            android:id="@+id/vin_value_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            app:layout_constraintStart_toEndOf="@id/barrier"
+                            app:layout_constraintTop_toTopOf="@id/vin_textView"
+                            tools:text="ABC1DEF2GHIGKL3MN" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/seller_card_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="20dp">
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:id="@+id/seller_image_view"
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:adjustViewBounds="true"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:riv_corner_radius="8dp"
+                            tools:src="@tools:sample/avatars" />
+
+                        <TextView
+                            android:id="@+id/seller_name_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginBottom="8dp"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                            android:textSize="18sp"
+                            app:layout_constraintBottom_toTopOf="@+id/seller_email_text_view"
+                            app:layout_constraintStart_toEndOf="@id/seller_image_view"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed"
+                            tools:text="@tools:sample/full_names" />
+
+                        <TextView
+                            android:id="@+id/seller_email_text_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/seller_name_text_view"
+                            app:layout_constraintTop_toBottomOf="@+id/seller_name_text_view"
+                            tools:text="abcdefg@mail.com" />
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/call_fab"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:outlineSpotShadowColor="@android:color/transparent"
+                            android:src="@android:drawable/stat_sys_phone_call"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tint="@android:color/white" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:id="@+id/description_title_texView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="8dp"
+                            android:text="@string/description"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/description_textView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/description_title_texView"
+                            tools:text="@tools:sample/lorem[50]" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bottom_bids_bar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            app:cardCornerRadius="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/bidAmount_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/insert_bid_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="3 800 000 ₽" />
+
+                <Button
+                    android:id="@+id/insert_bid_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/send_bid"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bottom_protocol_bar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:visibility="gone"
+            app:cardCornerRadius="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/get_protocol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/fetch_auction_protocol"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lots_list"
+    app:startDestination="@id/lotsListFragment">
+
+    <fragment
+        android:id="@+id/lotsListFragment"
+        android:name="dev.smai1e.carTrader.ui.views.auctionsList.AuctionsListFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_auctions_list" />
+</navigation>

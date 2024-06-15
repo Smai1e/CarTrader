@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/signInFragment">
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="dev.smai1e.carTrader.ui.views.auth.SignInFragment"
+        android:label="@string/title_sign_in"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_tabsFragment"
+            app:destination="@id/tabsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/signInFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="dev.smai1e.carTrader.ui.views.auth.SignUpFragment"
+        android:label="@string/title_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <argument
+            android:name="email"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/tabsFragment"
+        android:name="dev.smai1e.carTrader.ui.views.tabs.TabsFragment"
+        tools:layout="@layout/fragment_tabs" >
+        <action
+            android:id="@+id/action_tabsFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+        <action
+            android:id="@+id/action_tabsFragment_to_newLotFragment"
+            app:destination="@id/newLotFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+        <action
+            android:id="@+id/action_tabsFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+        <action
+            android:id="@+id/action_tabsFragment_to_filterFragment"
+            app:destination="@id/filterFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_tabsFragment_to_ownAuctionDetailsFragment"
+            app:destination="@id/ownAuctionDetailsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="dev.smai1e.carTrader.ui.views.auctionDetails.AuctionDetailsFragment"
+        tools:layout="@layout/fragment_auction_details" >
+        <argument
+            android:name="auctionId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_lotFragment_to_photoViewFragment"
+            app:destination="@id/photoViewFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+        <action
+            android:id="@+id/action_detailsFragment_to_sellerInfoDialog"
+            app:destination="@id/sellerInfoDialog" />
+        <action
+            android:id="@+id/action_detailsFragment_to_confirmDialog"
+            app:destination="@id/confirmDialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/newLotFragment"
+        android:name="dev.smai1e.carTrader.ui.views.newLot.NewLotFragment"
+        android:label="@string/title_creating_a_lot"
+        tools:layout="@layout/fragment_new_lot" >
+        <action
+            android:id="@+id/action_newLotFragment_to_carPickerFragment"
+            app:destination="@id/carPickerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="dev.smai1e.carTrader.ui.views.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_replenishmentBottomDialog"
+            app:destination="@id/ReplenishmentBottomDialog" />
+        <action
+            android:id="@+id/action_profileFragment_to_withdrawalBottomDialog"
+            app:destination="@id/WithdrawalBottomDialog" />
+        <action
+            android:id="@+id/action_profileFragment_to_cacheBottomDialog"
+            app:destination="@id/cacheBottomDialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoViewFragment"
+        android:name="dev.smai1e.carTrader.ui.views.photoView.PhotoViewFragment"
+        tools:layout="@layout/fragment_photo_view">
+        <argument
+            android:name="position"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="urlList"
+            app:argType="string[]" />
+
+    </fragment>
+    <dialog
+        android:id="@+id/ReplenishmentBottomDialog"
+        android:name="dev.smai1e.carTrader.ui.views.profile.ReplenishmentBottomDialog"
+        tools:layout="@layout/replenishment_bottom_dialog" />
+    <dialog
+        android:id="@+id/WithdrawalBottomDialog"
+        android:name="dev.smai1e.carTrader.ui.views.profile.WithdrawalBottomDialog"
+        tools:layout="@layout/withdrawal_bottom_dialog" />
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="dev.smai1e.carTrader.ui.views.filterPage.FilterFragment"
+        android:label="@string/title_filter"
+        tools:layout="@layout/fragment_filter" >
+        <action
+            android:id="@+id/action_filterFragment_to_carPickerFragment"
+            app:destination="@id/carPickerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ownAuctionDetailsFragment"
+        android:name="dev.smai1e.carTrader.ui.views.ownAuctionDetails.OwnAuctionDetailsFragment"
+        tools:layout="@layout/fragment_own_auction_details" >
+        <action
+            android:id="@+id/action_ownAuctionDetailsFragment_to_photoViewFragment"
+            app:destination="@id/photoViewFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
+        <argument
+            android:name="auctionId"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/carPickerFragment"
+        android:name="dev.smai1e.carTrader.ui.views.carPicker.CarPickerFragment"
+        android:label="@string/brand_model"
+        tools:layout="@layout/fragment_car_picker" />
+    <dialog
+        android:id="@+id/cacheBottomDialog"
+        android:name="dev.smai1e.carTrader.ui.views.profile.CacheBottomDialog"
+        android:label="fragment_cache_bottom_dialog"
+        tools:layout="@layout/cache_bottom_dialog" />
+    <dialog
+        android:id="@+id/sellerInfoDialog"
+        android:name="dev.smai1e.carTrader.ui.views.auctionDetails.SellerInfoDialog"
+        tools:layout="@layout/seller_info_dialog" >
+        <argument
+            android:name="sellerInfo"
+            app:argType="dev.smai1e.carTrader.ui.models.UserInfoUI" />
+    </dialog>
+    <dialog
+        android:id="@+id/confirmDialog"
+        android:name="dev.smai1e.carTrader.ui.views.auctionDetails.ConfirmDialog"
+        tools:layout="@layout/confirm_dialog" >
+        <argument
+            android:name="bidAmount"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </dialog>
+</navigation>
