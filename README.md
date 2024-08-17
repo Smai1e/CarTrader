@@ -5,7 +5,9 @@
 </p>
 
 
-This application is one of the parts of my [graduation project](Диплом_final_version.pdf)
+This application is one of the parts of my [graduation project](Диплом_final_version.pdf).
+
+CarTrader is an application for the auction sale of cars. It allows both to participate in auctions and to put your own car up for sale.
 
 ## 🛠️ Stack
 
