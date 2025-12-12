@@ -173,7 +173,7 @@ class AuctionsRepositoryImpl @Inject constructor(
                     dbos.map { it.toAuction() }
                 }
             }
-            .catch { RequestResult.Error<List<AuctionDBO>, DataError>(DataError.LocalStorageException(it)) }
+            .catch { emit(RequestResult.Error<List<AuctionDBO>, DataError>(DataError.LocalStorageException(it))) }
     }
 
     /**
