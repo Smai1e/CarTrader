@@ -77,7 +77,7 @@ class BidsRepositoryImpl @Inject constructor(
     private fun getAllFromDatabase(id: Long): RequestResultFlow<List<Bid>, DataError> {
         val dbRequest = flow { emit(bidDao.fetchBidsByAuctionId(id)) }
             .map { RequestResult.Success<List<BidDBO>, DataError>(it) }
-            .catch { RequestResult.Error<List<BidDBO>, DataError>(DataError.LocalStorageException(it))}
+            .catch { emit(RequestResult.Error<List<BidDBO>, DataError>(DataError.LocalStorageException(it))) }
         val start = flowOf<RequestResult<List<BidDBO>, DataError>>(RequestResult.Loading)
 
         return merge(start, dbRequest).map { result ->
