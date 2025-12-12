@@ -119,7 +119,7 @@ class UserRepositoryImpl @Inject constructor(
     private fun getFromDatabase(id: Long): RequestResultFlow<UserInfo, DataError> {
         val dbRequest = flow { emit(userDao.fetchUserById(id)) }
             .map { RequestResult.Success<UserDBO, DataError>(it) }
-            .catch { RequestResult.Error<UserDBO, DataError>(DataError.LocalStorageException(it)) }
+            .catch { emit(RequestResult.Error<UserDBO, DataError>(DataError.LocalStorageException(it))) }
         val start = flowOf<RequestResult<UserDBO, DataError>>(RequestResult.Loading)
 
         return merge(start, dbRequest).map { result ->
@@ -137,7 +137,7 @@ class UserRepositoryImpl @Inject constructor(
     private fun getBiddersFromDatabase(auctionId: Long): RequestResultFlow<List<UserInfo>, DataError> {
         val dbRequest = flow { emit(userDao.fetchBiddersByAuctionId(auctionId)) }
             .map { RequestResult.Success<List<UserDBO>, DataError>(it) }
-            .catch { RequestResult.Error<List<UserDBO>, DataError>(DataError.LocalStorageException(it)) }
+            .catch { emit(RequestResult.Error<List<UserDBO>, DataError>(DataError.LocalStorageException(it))) }
         val start = flowOf<RequestResult<List<UserDBO>, DataError>>(RequestResult.Loading)
 
         return merge(start, dbRequest).map { result ->
